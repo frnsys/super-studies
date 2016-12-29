@@ -1,0 +1,118 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 6em;
+    font-family: 'Helvetica';
+}
+
+img.inline {
+    height: 1.1em;
+    margin-bottom: -0.2em;
+    cursor: zoom-in;
+}
+
+.popover {
+    display: none;
+    position: fixed;
+    pointer-events: none;
+}
+.site-popover {
+    margin-top: 120px;
+}
+
+.highlight {
+    color: red;
+}
+
+figure {
+    display: inline-block;
+    margin: 0 auto;
+    cursor: help;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    filter: blur(60px);
+    -webkit-filter: blur(60px);
+    transition: 0.2s;
+    -moz-transition: filter 0.2s;
+    -webkit-transition: filter 0.2s;
+}
+
+.focused {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+}
+
+.insight {
+    cursor: zoom-in;
+    text-decoration: underline;
+    transition: 0.2s;
+    -moz-transition: color 0.2s;
+    -webkit-transition: color 0.2s;
+}
+.insight:hover {
+    color: #FCF088;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+.rotating-concept {
+    -webkit-animation: orbit 2s infinite linear;
+    -moz-animation: orbit 2s infinite linear;
+    -o-animation: orbit 2s infinite linear;
+    -ms-animation: orbit 2s infinite linear;
+    animation: orbit 2s infinite linear;
+    opacity: 0;
+    display: none;
+    transform-origin: 0px 0px;
+    position: fixed;
+    cursor: default;
+}
+
+
+@-webkit-keyframes orbit {
+    from { opacity: 1; -webkit-transform: rotate(0deg) translateX(80px) rotate(0deg); }
+    to   { opacity: 1; -webkit-transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+@-moz-keyframes orbit {
+    from { opacity: 1; -moz-transform: rotate(0deg) translateX(80px) rotate(0deg); }
+    to   { opacity: 1; -moz-transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+@-o-keyframes orbit {
+    from { opacity: 1; -o-transform: rotate(0deg) translateX(80px) rotate(0deg); }
+    to   { opacity: 1; -o-transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+@keyframes orbit {
+    from { opacity: 1; transform: rotate(0deg) translateX(80px) rotate(0deg); }
+    to   { opacity: 1; transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+iframe {
+    width: 1280px;
+    height: 800px;
+    transform: scale(0.4, 0.4);
+    border: 2px solid #222;
+    position: absolute;
+    top: -240px; /* -(800 - (800 * 0.4))/2 */
+    left: -384px; /* -(1280 - (1280 * 0.4))/2 */
+}
+.iframe-placeholder {
+    height: 320px; /* 800 * 0.4 */
+}
+
+.caption {
+    padding: 1em 0;
+    background: #fff;
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>popover video</title>
+  </head>
+  <body>
+    <h1>a situational representation on the part of the individual subject to that vaster and <a href="https://www.youtube.com/watch?v=d9ndKlm-G3s" data-caption="this is really important" class="trigger-popover" data-embed="https://www.youtube.com/embed/d9ndKlm-G3s?autoplay=1">properly unrepresentable totality</a> which is the ensemble of society's structures as a whole</h1>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        var mouse = {x:0,y:0},
+            offset = {x:10, y:10},
+            cache = {};
+
+        String.prototype.hashCode = function(){
+            var hash = 0;
+            if (this.length == 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                char = this.charCodeAt(i);
+                hash = ((hash<<5)-hash)+char;
+                hash = hash & hash; // Convert to 32bit integer
+            }
+            return hash;
+        }
+
+        $('.trigger-popover').on('mouseenter', function() {
+            var src = $(this).data('embed'),
+                hash = src.hashCode(),
+                caption = $(this).data('caption'),
+                cached;
+            if (!$('.popover').is(':visible')) {
+                console.log('creating popover');
+                cached = $('.popover#'+hash);
+                if (!cached.length) {
+                $('body').append('<div class="popover site-popover" id="'+hash+'"><div class="iframe-placeholder"></div><iframe src="'+src+'" frameborder="0" allowfullscreen></iframe><div class="caption">'+caption+'</div></div>');
+                    cached = $('.popover#'+hash);
+                } else {
+                    console.log("USING CACHED");
+                }
+                cached.show();
+                offset.x = -cached.width()/2;
+                offset.y = -cached.height()/4;
+                $(this).on('mouseleave', function() {
+                    console.log('leaving');
+                    $(this).off('mouseleave');
+                    cached.remove();
+                });
+            }
+        });
+
+        document.addEventListener('mousemove', function(e){
+            mouse.x = e.pageX;
+            mouse.y = e.pageY;
+            $('.popover').css({
+                left: (mouse.x + offset.x) + 'px',
+                top: (mouse.y + offset.y) + 'px'
+            });
+        });
+    </script>
+  </body>
+</html>

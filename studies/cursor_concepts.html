@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>cursor concepts</title>
+  </head>
+  <body>
+    <h1 class="rotating-concept">hello</h1>
+    <h1 class="rotating-concept" style="animation-delay:1s;">goodbye</h1>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        var mouse = {x:0,y:0},
+            radius = 80;
+        document.addEventListener('mousemove', function(e){
+            mouse.x = e.pageX;
+            mouse.y = e.pageY;
+            $('.rotating-concept').css({
+                left: (mouse.x - radius/2) + 'px',
+                top: (mouse.y - radius/2) + 'px'
+            }).show();
+        });
+    </script>
+  </body>
+</html>

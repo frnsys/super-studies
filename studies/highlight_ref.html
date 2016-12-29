@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>highlight ref</title>
+  </head>
+  <body>
+    <h1>a situational representation on the part of the individual subject to that vaster and <a data-ref="1">properly unrepresentable totality</a> which is the ensemble of society's structures as a whole</h1>
+    <figure data-ref="1">
+        <img src="image.jpg">
+    </figure>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        $('figure').on('mouseenter', function() {
+            this.ref = $(this).data('ref');
+            $('a[data-ref='+this.ref+']').addClass('highlight');
+        }).on('mouseleave', function() {
+            $('a[data-ref='+this.ref+']').removeClass('highlight');
+        });
+    </script>
+  </body>
+</html>

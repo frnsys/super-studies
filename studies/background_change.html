@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>background change</title>
+  </head>
+  <body>
+    <img class="background" src="masashi_wakui.jpg">
+    <h1>a situational representation on the part of the individual subject to that vaster and <a class="insight js-background-change">properly unrepresentable totality</a> which is the ensemble of society's structures as a whole</h1>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        $('.js-background-change').on('mouseenter', function() {
+            $('.background').addClass('focused');
+        }).on('mouseleave', function() {
+            $('.background').removeClass('focused');
+        });
+    </script>
+  </body>
+</html>

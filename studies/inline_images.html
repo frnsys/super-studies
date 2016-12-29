@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>inline images</title>
+  </head>
+  <body>
+    <h1>a situational representation on the part of the individual subject <img src="image.jpg" class="inline"> to that vaster and properly unrepresentable totality which is the ensemble of society's structures as a whole</h1>
+    <div class="popover"></div>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        var mouse = {x:0,y:0},
+            offset = {x:10, y:10};
+
+        $('.inline').on('mouseenter', function() {
+            var src = $(this).attr('src');
+            $('.popover').html('<img src="'+src+'">').show();
+            offset.x = -$('.popover').width()/2;
+            clearTimeout(this.timer);
+        }).on('mouseleave', function() {
+            this.timer = setTimeout(function() {
+                $('.popover').hide();
+            }, 10);
+        });
+
+        document.addEventListener('mousemove', function(e){
+            mouse.x = e.pageX;
+            mouse.y = e.pageY;
+            $('.popover').css({
+                left: (mouse.x + offset.x) + 'px',
+                top: (mouse.y + offset.y) + 'px'
+            });
+        });
+    </script>
+  </body>
+</html>
