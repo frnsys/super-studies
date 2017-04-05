@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>hover images</title>
+    <style>
+        .popover img {
+            box-shadow: 2px 2px 12px red;
+            animation: imganim 2s infinite;
+            animation-direction: alternate;
+        }
+        @keyframes imganim {
+          0%   { transform: skew(4deg, 4deg); }
+          100% { transform: skew(-4deg, -4deg); }
+        }
+    </style>
+  </head>
+  <body>
+    <h1>a situational representation on the part of the <em data-image="image.jpg">individual subject</em> to that vaster and properly unrepresentable totality which is the ensemble of society's structures as a whole</h1>
+    <div class="popover"></div>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        var mouse = {x:0,y:0},
+            offset = {x:10, y:10};
+
+        $('em').on('mouseenter', function() {
+            var src = $(this).data('image');
+            $('.popover').html('<img src="'+src+'">').show();
+            offset.x = -$('.popover').width()/2;
+            clearTimeout(this.timer);
+        }).on('mouseleave', function() {
+            this.timer = setTimeout(function() {
+                $('.popover').hide();
+            }, 10);
+        });
+
+        document.addEventListener('mousemove', function(e){
+            mouse.x = e.pageX;
+            mouse.y = e.pageY;
+            $('.popover').css({
+                left: (mouse.x + offset.x) + 'px',
+                top: (mouse.y + offset.y) + 'px'
+            });
+        });
+    </script>
+  </body>
+</html>

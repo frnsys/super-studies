@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>waterfall</title>
+    <style>
+        span {
+            position: relative;
+        }
+        .vom {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>a situational representation on the part of the individual subject to that vaster and properly unrepresentable totality which is the ensemble of society's structures as a whole</h1>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="/util.js"></script>
+    <script>
+        split_words($('h1'));
+        var vom = [];
+        var loop = setInterval(function() {
+            vom.map(el => {
+                var pos = el.position();
+                el.css('top', `${pos.top + 1}px`);
+            });
+        }, 20);
+        $('.word').on('mouseenter', function() {
+            var word = $(this).data('word');
+            var vom_el = $(`<span class="vom">${word}</span>`);
+            vom.push(vom_el);
+            $(this).append(vom_el);
+        });
+    </script>
+  </body>
+</html>
+

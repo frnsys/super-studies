@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>background highlight</title>
+    <style>
+        span {
+            position: relative;
+            z-index: 0;
+        }
+        .background {
+            filter: contrast(30%) brightness(200%);
+            z-index: 1;
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <img class="background" src="masashi_wakui.jpg">
+    <h1>a situational representation on the part of the individual subject to that vaster and properly unrepresentable totality which is the ensemble of society's structures as a whole</h1>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="/util.js"></script>
+    <script>
+        split_words($('h1'));
+        $('.word').on('mouseenter', function() {
+            $(this).css('z-index', 2);
+            $(this).css('text-shadow', '2px 2px 4px rgba(0,0,0,0.4)');
+            $('.background').fadeIn();
+        });
+        $('.word').on('mouseleave', function() {
+            $(this).css('z-index', 0);
+            $(this).css('text-shadow', 'none');
+            $('.background').fadeOut();
+        });
+    </script>
+  </body>
+</html>
+

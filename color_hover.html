@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>color hover</title>
+    <style>
+        @keyframes colours {
+             0% {color: #39f;}
+             25% {color: #8bc5d1;}
+             50% {color: #f8cb4a;}
+             75% {color: #8bc5d1;}
+            100% {color: #39f;}
+
+        }
+
+        span:hover {
+            animation-direction: normal;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-name: colours;
+            animation-timing-function: ease;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>a situational representation on the part of the individual subject to that vaster and properly unrepresentable totality which is the ensemble of society's structures as a whole</h1>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="/util.js"></script>
+    <script>
+        split_words($('h1'));
+    </script>
+  </body>
+</html>
